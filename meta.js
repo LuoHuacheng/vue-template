@@ -31,7 +31,7 @@ module.exports = {
       return templateVersion
     },
   },
-  
+
   prompts: {
     name: {
       when: 'isNotTest',
@@ -74,6 +74,26 @@ module.exports = {
       type: 'confirm',
       message: 'Install vue-router?',
     },
+    vuex: {
+      when: 'isNotTest',
+      type: 'confirm',
+      message: 'Install vuex?',
+    },
+    plugin: {
+      when: 'isNotTest',
+      type: 'confirm',
+      message: 'Use some plugins?',
+    },
+    api: {
+      when: 'isNotTest',
+      type: 'confirm',
+      message: 'Use api requrst tool?',
+    },
+    mobile: {
+      when: 'isNotTest',
+      type: 'confirm',
+      message: 'Use mobile style config?',
+    },
     lint: {
       when: 'isNotTest',
       type: 'confirm',
@@ -84,6 +104,11 @@ module.exports = {
       type: 'list',
       message: 'Pick an ESLint preset',
       choices: [
+        {
+          name: 'Prettier (https://github.com/prettier/eslint-config-prettier)',
+          value: 'prettier',
+          short: 'prettier',
+        },
         {
           name: 'Standard (https://github.com/standard/standard)',
           value: 'standard',
@@ -170,6 +195,9 @@ module.exports = {
     'test/unit/setup.js': "unit && runner === 'jest'",
     'test/e2e/**/*': 'e2e',
     'src/router/**/*': 'router',
+    'src/store/**/*': 'vuex',
+    'src/plugins/**/*': 'plugin',
+    'src/api/**/*': 'api',
   },
   complete: function(data, { chalk }) {
     const green = chalk.green
