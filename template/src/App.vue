@@ -1,24 +1,13 @@
 <template>
   <div id="app">
-    {{#router}}
     <router-view/>
-    {{else}}
-    <Login/>
-    {{/router}}
   </div>
 </template>
 
 <script>
-{{#unless router}}
-import Login from './views/Login';
-
-{{/unless}}
 export default {
-  name: 'App'{{#router}}{{else}},
-  components: {
-    Login,
-  }{{/router}}
-}
+  name: 'App',
+};
 </script>
 
 <style>

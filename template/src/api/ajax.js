@@ -1,7 +1,7 @@
 import axios from 'axios';
 import * as Cookies from 'js-cookie';
 import qs from 'qs';
-import Vue from 'vue';
+// import Vue from 'vue';
 import router from '../router';
 
 const url = process.env.API_URL;
@@ -12,13 +12,13 @@ const $http = axios.create({
   responseType: 'json', // 返回数据格式
   withCredentials: true, // 是否允许带cookie等验证信息
   headers: {
-    'Content-Type': 'application/x-www-form-urlencoded;application/json;charset=utf-8'
+    'Content-Type': 'application/x-www-form-urlencoded;application/json;charset=utf-8',
   },
 });
 
 // 添加请求拦截器
 $http.interceptors.request.use(
-  config => {
+  (config) => {
     // 统一修改请求地址参数
     if (Cookies.get('token')) {
       config.headers.Authorization = Cookies.get('token');
@@ -28,12 +28,12 @@ $http.interceptors.request.use(
     }
     return config;
   },
-  error => Promise.reject(error)
+  error => Promise.reject(error),
 );
 
 // 添加响应拦截器
 $http.interceptors.response.use(
-  response => {
+  (response) => {
     // 处理响应数据
     const result = response.data;
     if (result && result.status !== 'SUCCESS') {
@@ -46,7 +46,7 @@ $http.interceptors.response.use(
     }
     return result.data;
   },
-  error => {
+  (error) => {
     // http错误码判断
     if (error.response.status === 403) {
       router.push({ path: '/login' });
@@ -59,7 +59,7 @@ $http.interceptors.response.use(
     }
     // 返回 response 里的错误信息
     return Promise.reject(error.response.statusText);
-  }
+  },
 );
 
 export default $http;

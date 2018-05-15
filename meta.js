@@ -87,7 +87,7 @@ module.exports = {
     api: {
       when: 'isNotTest',
       type: 'confirm',
-      message: 'Use api requrst tool?',
+      message: 'Use api request tool?',
     },
     mobile: {
       when: 'isNotTest',
@@ -104,11 +104,6 @@ module.exports = {
       type: 'list',
       message: 'Pick an ESLint preset',
       choices: [
-        {
-          name: 'Prettier (https://github.com/prettier/eslint-config-prettier)',
-          value: 'prettier',
-          short: 'prettier',
-        },
         {
           name: 'Standard (https://github.com/standard/standard)',
           value: 'standard',

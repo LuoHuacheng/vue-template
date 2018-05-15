@@ -7,7 +7,7 @@
 <script>
 export default {
   name: 'Logo',
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
