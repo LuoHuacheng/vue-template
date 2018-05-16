@@ -193,6 +193,7 @@ module.exports = {
     'src/store/**/*': 'vuex',
     'src/plugins/**/*': 'plugin',
     'src/api/**/*': 'api',
+    'src/styles/**/*.styl': 'mobile',
   },
   complete: function(data, { chalk }) {
     const green = chalk.green
