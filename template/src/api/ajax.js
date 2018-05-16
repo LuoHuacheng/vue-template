@@ -41,7 +41,6 @@ $http.interceptors.response.use(
       if (result.errorCode === 403) {
         router.push({ path: '/login' });
       }
-      console.error(result.message);
       return Promise.reject(result);
     }
     return result.data;
