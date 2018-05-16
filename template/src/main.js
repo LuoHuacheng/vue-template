@@ -1,6 +1,9 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue';
+{{#mobile}}
+import FastClick from 'fastclick';
+{{/mobile}}
 import App from './App';
 {{#router}}
 import router from './router';
@@ -23,6 +26,10 @@ Object.keys(Filters).forEach((key) => {
   Vue.filter(key, Filters[key]);
 });
 {{/plugin}}
+
+{{#mobile}}
+FastClick.attach(document.body);
+{{/mobile}}
 
 Vue.config.productionTip = false;
 

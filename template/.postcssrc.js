@@ -5,8 +5,7 @@ module.exports = {
     "postcss-import": {},
     "postcss-url": {},
     // to edit target browsers: use "browserslist" field in package.json
-    "autoprefixer": {},
-    {{#mobile}}
+    {{#if mobile}}
     "postcss-aspect-ratio-mini": {},
     "postcss-write-svg": {
       utf8: false
@@ -26,6 +25,8 @@ module.exports = {
       autoprefixer: false,
       "postcss-zindex": false
     },
-    {{/mobile}}
+    {{else}}
+    "autoprefixer": {},
+    {{/if}}
   }
 }

@@ -194,6 +194,7 @@ module.exports = {
     'src/plugins/**/*': 'plugin',
     'src/api/**/*': 'api',
     'src/styles/**/*.styl': 'mobile',
+    'src/styles/**/*.css': '!mobile',
   },
   complete: function(data, { chalk }) {
     const green = chalk.green
