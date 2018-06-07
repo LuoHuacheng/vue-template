@@ -79,6 +79,11 @@ module.exports = {
       type: 'confirm',
       message: 'Install vuex?',
     },
+    api: {
+      when: 'isNotTest',
+      type: 'confirm',
+      message: 'Use api request tool?',
+    },
     lint: {
       when: 'isNotTest',
       type: 'confirm',
@@ -176,6 +181,7 @@ module.exports = {
     'test/e2e/**/*': 'e2e',
     'src/router/**/*': 'router',
     'src/store/**/*': 'vuex',
+    'src/api/**/*': 'api',
   },
   complete: function(data, { chalk }) {
     const green = chalk.green
