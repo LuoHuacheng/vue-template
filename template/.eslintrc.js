@@ -2,59 +2,56 @@
 
 module.exports = {
   root: true,
+  parser: 'babel-eslint',
   parserOptions: {
-    parser: 'babel-eslint'
+    sourceType: 'module'
   },
   env: {
     browser: true,
   },
   {{#if_eq lintConfig "standard"}}
-  extends: [
-    // https://github.com/vuejs/eslint-plugin-vue#priority-a-essential-error-prevention
-    // consider switching to `plugin:vue/strongly-recommended` or `plugin:vue/recommended` for stricter rules.
-    'plugin:vue/essential',
-    // https://github.com/standard/standard/blob/master/docs/RULES-en.md
-    'standard'
-  ],
+  // https://github.com/standard/standard/blob/master/docs/RULES-en.md
+  extends: 'standard',
   {{/if_eq}}
   {{#if_eq lintConfig "airbnb"}}
-  // https://github.com/vuejs/eslint-plugin-vue#priority-a-essential-error-prevention
-  // consider switching to `plugin:vue/strongly-recommended` or `plugin:vue/recommended` for stricter rules.
-  extends: ['plugin:vue/essential', 'airbnb-base'],
-  {{/if_eq}}
-  {{#if_eq lintConfig "none"}}
-  // https://github.com/vuejs/eslint-plugin-vue#priority-a-essential-error-prevention
-  // consider switching to `plugin:vue/strongly-recommended` or `plugin:vue/recommended` for stricter rules.
-  extends: ['plugin:vue/essential'],
+  extends: 'airbnb-base',
   {{/if_eq}}
   // required to lint *.vue files
   plugins: [
-    'vue'
+    'html'
   ],
   {{#if_eq lintConfig "airbnb"}}
   // check if imports actually resolve
-  settings: {
+  'settings': {
     'import/resolver': {
-      webpack: {
-        config: 'build/webpack.base.conf.js'
+      'webpack': {
+        'config': 'build/webpack.base.conf.js'
       }
     }
   },
+  'globals': {
+    'document': true
+  },
   {{/if_eq}}
   // add your custom rules here
-  rules: {
+  'rules': {
     {{#if_eq lintConfig "standard"}}
+    // allow paren-less arrow functions
+    'arrow-parens': 0,
     // allow async-await
-    'generator-star-spacing': 'off',
+    'generator-star-spacing': 0,
     {{/if_eq}}
     {{#if_eq lintConfig "airbnb"}}
     // don't require .vue extension when importing
-    'import/extensions': ['error', 'always', {
-      js: 'never',
-      vue: 'never'
+    'import/extensions': ['off', 'always', {
+      'js': 'never',
+      'vue': 'never'
     }],
-    // disallow reassignment of function parameters
-    // disallow parameter object manipulation except for specific exclusions
+    'import/no-unresolved': [0, {commonjs: true, amd: true}],
+    // allow optionalDependencies
+    'import/no-extraneous-dependencies': ['error', {
+      'optionalDependencies': ['test/unit/index.js']
+    }],
     'no-param-reassign': ['error', {
       props: true,
       ignorePropertyModificationsFor: [
@@ -65,10 +62,6 @@ module.exports = {
         'result', // for some result
         'param', // for some params
       ]
-    }],
-    // allow optionalDependencies
-    'import/no-extraneous-dependencies': ['error', {
-      optionalDependencies: ['test/unit/index.js']
     }],
     {{/if_eq}}
     // allow console during development

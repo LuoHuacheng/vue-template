@@ -1,12 +1,11 @@
-import axios from 'axios';
-import * as Cookies from 'js-cookie';
+import { AjaxPlugin, cookie } from 'vux';
 import qs from 'qs';
 // import Vue from 'vue';
 import router from '../router';
 
 const url = process.env.API_URL;
 
-const $http = axios.create({
+const $http = AjaxPlugin.$http.create({
   baseURL: url, // api域名及端口
   timeout: 50000, // 超时自动取消请求
   responseType: 'json', // 返回数据格式
@@ -20,8 +19,8 @@ const $http = axios.create({
 $http.interceptors.request.use(
   (config) => {
     // 统一修改请求地址参数
-    if (Cookies.get('token')) {
-      config.headers.Authorization = Cookies.get('token');
+    if (cookie.get('token')) {
+      config.headers.Authorization = cookie.get('token');
     }
     if (config.method === 'post' || config.method === 'option') {
       config.data = qs.stringify(config.data);

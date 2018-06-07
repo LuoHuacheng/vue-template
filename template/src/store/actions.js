@@ -1,11 +1,11 @@
 // actions
-import * as Cookies from 'js-cookie';
+import { cookie } from 'vux';
 
 import { login } from '../api/fetchData';
 
 const actions = {
   LOGIN: ({ commit }, data) => login(data).then((res) => {
-    Cookies.set('token', res.token);
+    cookie.set('token', res.token);
     commit('LOGIN', res);
   }),
 };
