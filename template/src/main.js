@@ -1,14 +1,37 @@
-{{#if_eq build "standalone"}}
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
-{{/if_eq}}
-import Vue from 'vue'
-import App from './App'
+import Vue from 'vue';
+{{#mobile}}
+import FastClick from 'fastclick';
+{{/mobile}}
+import App from './App';
 {{#router}}
-import router from './router'
+import router from './router';
 {{/router}}
+{{#vuex}}
+import store from './store';
+{{/vuex}}
+{{#plugin}}
+import * as Filters from './plugins/filters';
+{{/plugin}}
 
-Vue.config.productionTip = false
+import './styles/common.css';
+{{#mobile}}
+import './styles/common.styl';
+{{/mobile}}
+
+{{#plugin}}
+// 注册过滤器
+Object.keys(Filters).forEach((key) => {
+  Vue.filter(key, Filters[key]);
+});
+{{/plugin}}
+
+{{#mobile}}
+FastClick.attach(document.body);
+{{/mobile}}
+
+Vue.config.productionTip = false;
 
 /* eslint-disable no-new */
 new Vue({
@@ -16,11 +39,9 @@ new Vue({
   {{#router}}
   router,
   {{/router}}
-  {{#if_eq build "runtime"}}
-  render: h => h(App)
-  {{/if_eq}}
-  {{#if_eq build "standalone"}}
+  {{#vuex}}
+  store,
+  {{/vuex}}
   components: { App },
-  template: '<App/>'
-  {{/if_eq}}
-})
+  template: '<App/>',
+});

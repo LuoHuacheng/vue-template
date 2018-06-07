@@ -25,8 +25,23 @@
     "build": "node build/build.js"
   },
   "dependencies": {
-    "vue": "^2.5.2"{{#router}},
-    "vue-router": "^3.0.1"{{/router}}
+    {{#api}}
+    "axios": "^0.18.0",
+    "qs": "^6.5.2",
+    {{/api}}
+    "babel-polyfill": "^6.26.0",
+    "js-cookie": "^2.2.0",
+    "vue": "^2.5.2",
+    {{#mobile}}
+    "fastclick": "^1.0.6",
+    {{/mobile}}
+    {{#router}}
+    "vue-router": "^3.0.1",
+    {{/router}}
+    {{#vuex}}
+    "vuex": "^3.0.1",
+    "vuex-persistedstate": "^2.5.3"
+    {{/vuex}}
   },
   "devDependencies": {
     {{#lint}}
@@ -102,6 +117,15 @@
     "node-notifier": "^5.1.2",
     "postcss-import": "^11.0.0",
     "postcss-loader": "^2.0.8",
+    {{#mobile}}
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.2",
+    "cssnano": "^3.10.0",
+    "postcss-aspect-ratio-mini": "^0.0.2",
+    "postcss-px-to-viewport": "^0.0.3",
+    "postcss-viewport-units": "^0.1.4",
+    "postcss-write-svg": "^3.0.1",
+    {{/mobile}}
     "postcss-url": "^7.2.1",
     "semver": "^5.3.0",
     "shelljs": "^0.7.6",

@@ -31,7 +31,7 @@ module.exports = {
       return templateVersion
     },
   },
-  
+
   prompts: {
     name: {
       when: 'isNotTest',
@@ -73,6 +73,26 @@ module.exports = {
       when: 'isNotTest',
       type: 'confirm',
       message: 'Install vue-router?',
+    },
+    vuex: {
+      when: 'isNotTest',
+      type: 'confirm',
+      message: 'Install vuex?',
+    },
+    plugin: {
+      when: 'isNotTest',
+      type: 'confirm',
+      message: 'Use some plugins?',
+    },
+    api: {
+      when: 'isNotTest',
+      type: 'confirm',
+      message: 'Use api request tool?',
+    },
+    mobile: {
+      when: 'isNotTest',
+      type: 'confirm',
+      message: 'Use mobile style config?',
     },
     lint: {
       when: 'isNotTest',
@@ -170,6 +190,11 @@ module.exports = {
     'test/unit/setup.js': "unit && runner === 'jest'",
     'test/e2e/**/*': 'e2e',
     'src/router/**/*': 'router',
+    'src/store/**/*': 'vuex',
+    'src/plugins/**/*': 'plugin',
+    'src/api/**/*': 'api',
+    'src/styles/**/*.styl': 'mobile',
+    'src/styles/**/*.css': '!mobile',
   },
   complete: function(data, { chalk }) {
     const green = chalk.green
