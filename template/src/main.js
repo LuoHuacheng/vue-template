@@ -12,10 +12,6 @@ import store from './store';
 {{/vuex}}
 import App from './App'
 
-const router = new VueRouter({
-  routes
-})
-
 FastClick.attach(document.body)
 
 Vue.config.productionTip = false
