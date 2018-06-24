@@ -42,6 +42,5 @@ new Vue({
   {{#vuex}}
   store,
   {{/vuex}}
-  components: { App },
-  template: '<App/>',
+  render: h => h(App),
 });
