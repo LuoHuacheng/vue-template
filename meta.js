@@ -121,11 +121,6 @@ module.exports = {
         },
       ],
     },
-    unit: {
-      when: 'isNotTest',
-      type: 'confirm',
-      message: 'Set up unit tests',
-    },
     autoInstall: {
       when: 'isNotTest',
       type: 'list',

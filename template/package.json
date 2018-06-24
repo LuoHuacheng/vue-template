@@ -36,7 +36,7 @@
     "@vue/component-compiler-utils": "^2.0.0",
     "parcel-bundler": "^1.9.2",
     "parcel-plugin-eslint": "^1.0.4",
-    "vue-template-compiler": "^2.5.16"
+    "vue-template-compiler": "^2.5.16",
     {{#lint}}
     "babel-eslint": "^8.2.1",
     "eslint": "^4.19.0",
