@@ -51,24 +51,6 @@ module.exports = {
       type: 'string',
       message: 'Author',
     },
-    build: {
-      when: 'isNotTest',
-      type: 'list',
-      message: 'Vue build',
-      choices: [
-        {
-          name: 'Runtime + Compiler: recommended for most users',
-          value: 'standalone',
-          short: 'standalone',
-        },
-        {
-          name:
-            'Runtime-only: about 6KB lighter min+gzip, but templates (or any Vue-specific HTML) are ONLY allowed in .vue files - render functions are required elsewhere',
-          value: 'runtime',
-          short: 'runtime',
-        },
-      ],
-    },
     router: {
       when: 'isNotTest',
       type: 'confirm',
@@ -105,14 +87,14 @@ module.exports = {
       message: 'Pick an ESLint preset',
       choices: [
         {
-          name: 'Standard (https://github.com/standard/standard)',
-          value: 'standard',
-          short: 'Standard',
-        },
-        {
           name: 'Airbnb (https://github.com/airbnb/javascript)',
           value: 'airbnb',
           short: 'Airbnb',
+        },
+        {
+          name: 'Standard (https://github.com/standard/standard)',
+          value: 'standard',
+          short: 'Standard',
         },
         {
           name: 'none (configure it yourself)',

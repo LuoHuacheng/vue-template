@@ -6,9 +6,8 @@
   "private": true,
   "scripts": {
     "dev": "parcel index.html --no-source-maps",
-    "start": "npm run dev",
     {{#lint}}
-    "lint": "eslint --ext .js,.vue src{{#unit}} test/unit{{/unit}}{{#e2e}} test/e2e/specs{{/e2e}}",
+    "lint": "eslint --ext .js,.vue src",
     {{/lint}}
     "build": "parcel build index.html"
   },
